@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área de Trabalho Infantil</title>
+    <link rel="stylesheet" href="css/desktop.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Playwrite+HR+Lijeva:wght@100..400&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <script src="js/desktop.js" defer></script>
+</head>
+<body>
+
+<section id="desktop-screen" class="desktop-screen">
+
+    <div class="desktop-welcome">
+        <h1>Desktop Infantil</h1>
+        <p>Olá, <span id="desktop-student-name">Estudante</span>!</p>
+    </div>
+
+    <div class="desktop-icons">
+        <button id="desktop-files" class="desktop-icon" type="button">
+            <span class="desktop-icon-image">📁</span>
+            <span class="desktop-icon-name">Meus Arquivos</span>
+        </button>
+        
+        <button class="desktop-icon" type="button">
+            <span class="desktop-icon-image">🖥️</span>
+            <span class="desktop-icon-name">Meu Computador</span>
+        </button>
+
+        <button class="desktop-icon" type="button">
+            <span class="desktop-icon-image">🎮</span>
+            <span class="desktop-icon-name">Jogos</span>
+        </button>
+
+        <button class="desktop-icon" type="button">
+            <span class="desktop-icon-image">🖼️</span>
+            <span class="desktop-icon-name">Imagens</span>
+        </button>
+
+        <button class="desktop-icon" type="button">
+            <span class="desktop-icon-image">🗑️</span>
+            <span class="desktop-icon-name">Lixeira</span>
+        </button>
+    </div>
+
+    <!-- Janela: Meus Arquivos -->
+    <div id="files-window" class="app-window hidden">
+        <div class="windows-header">
+            <span>📁 Meus Arquivos</span>
+            <div class="windows-controls">
+                <button id="minimize-files" class="windows-control" type="button" aria-label="Minimizar">_</button>
+                <button id="maximize-files" class="windows-control" type="button" aria-label="Maximizar">□</button>
+                <button id="close-files" class="windows-close" type="button" aria-label="Fechar">x</button>
+            </div>
+        </div>
+        <div class="windows-content">
+            <p>Seus arquivos aparecerão aqui.</p>
+        </div>
+    </div>
+
+    <!-- Janela: Calculadora -->
+    <div id="calculator-window" class="app-window hidden">
+        <div class="windows-header">
+            <span>🧮 Calculadora</span>
+            <div class="windows-controls">
+                <button id="minimize-calculator" class="windows-control" type="button" aria-label="Minimizar">_</button>
+                <button id="close-calculator" class="windows-close" type="button" aria-label="Fechar">x</button>
+            </div>
+        </div>
+        <div class="windows-content iframe-content">
+            <iframe src="aplicativos/calculadora/index.html" title="Calculadora"></iframe>
+        </div>
+    </div>
+
+    <!-- Janela: Bloco de Notas -->
+    <div id="notepad-window" class="app-window hidden">
+        <div class="windows-header">
+            <span>📝 Editor de texto</span>
+            <div class="windows-controls">
+                <button id="minimize-notepad" class="windows-control" type="button" aria-label="Minimizar">_</button>
+                <button id="maximize-notepad" class="windows-control" type="button" aria-label="Maximizar">□</button>
+                <button id="close-notepad" class="windows-close" type="button" aria-label="Fechar">x</button>
+            </div>
+        </div>
+        <div class="windows-content iframe-content">
+            <iframe src="aplicativos/Bloco de Notas/index.html" title="Bloco de Notas"></iframe>
+        </div>
+    </div>
+
+    <!-- Barra de Tarefas -->
+    <div class="taskbar">
+        <button id="start-button" class="start-button" type="button">🪟 Iniciar</button>
+
+        <div class="taskbar-apps">
+            <button id="taskbar-files" class="taskbar-app hidden" type="button">
+                <span class="taskbar-app-icon">📁</span><span>Meus Arquivos</span>
+            </button>
+
+            <button id="taskbar-calculator" class="taskbar-app hidden" type="button">
+                <span class="taskbar-app-icon">🧮</span><span>Calculadora</span>
+            </button>
+
+            <button id="taskbar-notepad" class="taskbar-app hidden" type="button">
+                <span class="taskbar-app-icon">📝</span><span>Editor de texto</span>
+            </button>
+        </div>
+
+        <div id="start-menu" class="start-menu hidden">
+            <h2>Menu Iniciar</h2>
+            <p>Escolha um aplicativo</p>
+
+            <div class="start-menu-apps">
+                <button id="open-files" class="start-menu-app" type="button">
+                    <span class="start-menu-icon">📁</span>
+                    <span>Meus Arquivos</span>
+                </button>
+
+                <button id="open-calculator" class="start-menu-app" type="button">
+                    <span class="start-menu-icon">🧮</span>
+                    <span>Calculadora</span>
+                </button>
+
+                <button id="open-notepad" class="start-menu-app" type="button">
+                    <span class="start-menu-icon">📝</span>
+                    <span>Editor de Texto</span>
+                </button>
+
+                <button class="start-menu-app" type="button">
+                    <span class="start-menu-icon">🖥️</span>
+                    <span>Meu Computador</span>
+                </button>
+
+                <button class="start-menu-app" type="button">
+                    <span class="start-menu-icon">🎮</span>
+                    <span>Jogos</span>
+                </button>
+            </div>
+
+            <div class="start-menu-footer">
+                <button id="logout-button" class="logout-button" type="button">🚪 Sair / Trocar Usuário</button>
+            </div>
+        </div>
+
+        <div class="taskbar-clock">
+            <span id="clock-time">00:00</span>
+            <span id="clock-date">00/00/0000</span>
+        </div>
+    </div>
+
+</section>
+
+</body>
+</html>

@@ -3,98 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Área de trabalho infantil</title>
-    <link rel="stylesheet" href="./css/login.css"> <!--faz o link com o css 'href' é o caminho do arquivo referência-->
-    <link rel="stylesheet" href="css/desktop.css">
-    <script src="js/login.js" defer></script><!-- faz o link com o javascript, o defer espera o html carregar para poder executar-->
-    <script src="js/desktop.js" defer></script>
+    <title>Login - Desktop Infantil</title>
+    <link rel="stylesheet" href="css/login.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playwrite+HR+Lijeva:wght@100..400&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playwrite+HR+Lijeva:wght@100..400&display=swap');
-    </style>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Playwrite+HR+Lijeva:wght@100..400&display=swap');
-    </style>
+    <script src="js/login.js" defer></script>
 </head>
 <body>
 
 <main id="login-screen" class="login-screen">
     <aside class="login-visual">
-           <img src="assets/imagens/Romarinho2.png" alt="" class="login-character">
+        <img src="assets/imagens/Romarinho2.png" alt="Romarinho" class="login-character">
     </aside>
 
     <aside class="login-visual2">
-        <img src="assets/imagens/RomarinhoHacker.png" alt="" class="login-character2">
+        <img src="assets/imagens/RomarinhoHacker.png" alt="Romarinho Hacker" class="login-character2">
     </aside>
-
 
     <div class="login-container">
         <h1><img src="assets/imagens/QuartoGamer.png" alt="" class="login-topicon"> DESKTOP INFANTIL</h1>
 
         <section class="login-info">
-
             <div class="info-block">
-
                 <div class="login-icon-swap" data-tooltip="Olá, eu sou o Romarinho!">
-
-                <img src="assets/imagens/RomarianhoLendo1.png" alt="" class="login-icon icon-default">
-
-                    <img src="assets/imagens/RomarinhoFlando1.png" alt="" class="login-icon icon-hover">
+                    <img src="assets/imagens/RomarianhoLendo1.png" alt="Romarinho Lendo" class="login-icon icon-default">
+                    <img src="assets/imagens/RomarinhoFlando1.png" alt="Romarinho Falando" class="login-icon icon-hover">
                 </div>
 
                 <div class="info-text">
-
-                <h2>Leitura é a chave:</h2>
-
-                <p>
-                    Passe o mouse sobre os botões e leia os avisos na tela.
-                    A resposta do seu desafio quase sempre está bem diante
-                    dos seus olhos!
-                </p>
+                    <h2>Leitura é a chave:</h2>
+                    <p>
+                        Passe o mouse sobre os botões e leia os avisos na tela.
+                        A resposta do seu desafio quase sempre está bem diante
+                        dos seus olhos!
+                    </p>
                 </div>
-
             </div>
 
             <div class="info-block">
-
                 <div class="login-icon-swap" data-tooltip="Olá, sou o pai do Romarinho! Estou sempre por perto para ajudá-lo nas atividades online.">
-
-                <img src="assets/imagens/RomarianhoPai1.png" alt="" class="login-icon icon-default">
-
-                    <img src="assets/imagens/RomarianhoPai2.png" alt="" class="login-icon icon-hover">
-
-                    </div>
+                    <img src="assets/imagens/RomarianhoPai1.png" alt="Pai do Romarinho" class="login-icon icon-default">
+                    <img src="assets/imagens/RomarianhoPai2.png" alt="Pai do Romarinho Falando" class="login-icon icon-hover">
+                </div>
 
                 <div class="info-text">
-
-                <h2> Para os Pais & Responsáveis:</h2>
-
-                <p>
-                    Navegue junto com seu filho; acompanhar essa atividade
-                    garante a segurança da criança e transforma a tecnologia
-                    em um momento único de aprendizado em família.
-                </p>
+                    <h2>Para os Pais & Responsáveis:</h2>
+                    <p>
+                        Navegue junto com seu filho; acompanhar essa atividade
+                        garante a segurança da criança e transforma a tecnologia
+                        em um momento único de aprendizado em família.
+                    </p>
                 </div>
             </div>
-
         </section>
 
-        <form id="login-form"> <!--usado para formulário com a função submit (form)-->
-
-            <label for="student-name"> <!--esse label "for" faz que ao clicar no nome do aluno ele leva o curso para ‘input’ "id" ambos chamados de "student-name" caso contrário não funcionaria-->
+        <form id="login-form">
+            <label for="student-name">
                 <p class="login-instruction">Digite o seu nome para começar:</p>
             </label>
 
             <input
-                    type="text"
-                    id="student-name"
-                    name="studentName"
-                    placeholder="Digite seu nome"
+                type="text"
+                id="student-name"
+                name="studentName"
+                placeholder="Digite seu nome"
+                autocomplete="off"
             >
 
-            <button id="login-button" type="submit"><!--submit envia formulário-->
+            <button id="login-button" type="submit">
                 ENTRAR
             </button>
 
@@ -102,147 +79,15 @@
         </form>
     </div>
 </main>
-<!--tela de boas vindas-->
-<section id="wellcome-screen" class="wellcome-screen hidden">
-    <div class="wellcome-content">
-        <h2>Bem-Vindo, <span id="wellcome-name"></span>
-        </h2>
+
+<!-- Tela de boas-vindas / transição -->
+<section id="welcome-screen" class="welcome-screen hidden">
+    <div class="welcome-content">
+        <h2>Bem-Vindo, <span id="welcome-name"></span>!</h2>
         <div class="loading-spinner"></div>
-        <p> Preparando área de trabalho</p>
+        <p>Preparando área de trabalho...</p>
     </div>
 </section>
 
-<!--DESKTOP-->
-<section id="desktop-screen" class="desktop-screen hidden" >
-
-    <div class="desktop-wellcome">
-        <h1>Desktop infantil</h1><p>Olá, <span id="desktop-student-name"></span></p>
-    </div>
-
-    <div class="desktop-icons">
-        <button id="desktop-files" class="desktop-icon" type="button">
-            <span class="desktop-icon-image">📁</span>
-            <span class="desktop-icon-name">Meus Arquivos</span>
-        </button>
-
-        <button class="desktop-icon" type="button">
-            <span class="desktop-icon-image">🖥️</span>
-            <span class="desktop-icon-name">Meu Computador</span>
-        </button>
-
-        <button class="desktop-icon" type="button">
-            <span class="desktop-icon-image">🎮</span>
-            <span class="desktop-icon-name">Jogos</span>
-        </button>
-
-        <button class="desktop-icon" type="button">
-            <span class="desktop-icon-image">🖼</span>
-            <span class="desktop-icon-name">Imagens</span>
-        </button>
-
-        <button class="desktop-icon" type="button">
-            <span class="desktop-icon-image">🗑️</span>
-            <span class="desktop-icon-name">Lixeira</span>
-        </button>
-
-    </div>
-
-    <div id="files-window" class="app-window hidden">
-
-        <div class="windows-header">
-            <span>📁 Meus Arquivos</span>
-            <div class="windows-controls">
-
-                <button id="minimize-files" class="windows-control" type="button" aria-label="minimize">_</button>
-
-                <button id="maximize-files" class="windows-control" type="button" aria-label="Maximizar">□</button>
-
-                <button id="close-files" class="windows-close" type="button" aria-label="close">x</button>
-
-                </div>
-        </div>
-
-        <div class="windows-content">
-            <p> seus arquivos aparecerão aqui</p>
-        </div>
-
-    </div>
-
-    <div id="calculator-window" class="app-window hidden">
-
-        <div class="windows-header">
-            <span>🧮 Calculadora</span>
-
-            <div class="windows-controls">
-
-                <button id="minimize-calculator" class="windows-control" type="button" aria-label="minimize">_</button>
-
-                <button id="maximize-calculator" class="windows-control" type="button" aria-label="Maximizar">□</button>
-
-                <button id="close-calculator" class="windows-close" type="button" aria-label="close">x</button>
-
-            </div>
-        </div>
-
-        <div class="windows-content calculator-content">
-            <iframe src="aplicativos/calculadora/index.html" title="Calculadora"></iframe>
-        </div>
-    </div>
-
-        <div class="taskbar">
-
-            <button id="start-button" class="start-button" type="button">🪟 Iniciar</button>
-
-            <div class="taskbar-apps">
-                <button id="taskbar-files" class="taskbar-app hidden" type="button">
-                <span class="taskbar-app-icon">📁</span><span>Meus Arquivos</span>
-                </button>
-
-                <button id="taskbar-calculator" class="taskbar-app hidden" type="button">
-                    <span class="taskbar-app-icon">🧮</span>
-                    <span>Calculadora </span>
-                </button>
-            </div>
-
-            <div id="start-menu" class="start-menu hidden">
-                <h2>Menu Iniciar</h2>
-                <p>Escolha um aplicativo</p>
-
-                <div class="start-menu-apps">
-
-                    <button id="open-files" class="start-menu-app" type="button">
-                        <span class="start-menu-icon">📁</span>
-                        <span>Meus Arquivos</span>
-                    </button>
-
-                    <button class="start-menu-app" type="button">
-                        <span class="start-menu-icon">🖥️</span>
-                        <span>Meu Computador</span>
-                    </button>
-
-                    <button class="start-menu-app" type="button">
-                    <span class="start-menu-icon">📝</span>
-                    <span>Bloco de Notas</span>
-                    </button>
-
-                    <button class="start-menu-app" type="button">
-                        <span class="start-menu-icon">🎮</span>
-                        <span>Jogos</span>
-                    </button>
-
-                    <button id="open-calculator" class="start-menu-app" type="button">
-                        <span class="start-menu-icon">🧮</span>
-                        <span>Calculadora</span>
-                    </button>
-                </div>
-            </div>
-
-            <div class="taskbar-clock">
-                <span id="clock-time">00:00</span>
-                <span id="clock-date">00/00/0000</span>
-            </div>
-        </div>
-
-</section>
 </body>
 </html>

@@ -1,60 +1,39 @@
-const studentNameInput =
-    document.querySelector("#student-name");
-
-const loginMessage =
-    document.querySelector("#login-message");
-
+const studentNameInput = document.querySelector("#student-name");
+const loginMessage = document.querySelector("#login-message");
 const loginForm = document.querySelector("#login-form");
+const loginScreen = document.querySelector("#login-screen");
+const welcomeScreen = document.querySelector("#welcome-screen");
+const welcomeName = document.querySelector("#welcome-name");
 
-const loginScreen =
-    document.querySelector("#login-screen");
-
-const desktopScreen =
-    document.querySelector("#desktop-screen");
-
-const wellcomeScreen = document.querySelector("#wellcome-screen");
-
-const wellcomeName=document.querySelector("#wellcome-name");
-
-const desktopStudentName = document.querySelector("#desktop-student-name");
-
-const desktopIcons=document.querySelectorAll("#desktop-icons");
-
-function handleLoginSubmit(event){
+function handleLoginSubmit(event) {
     event.preventDefault();
 
     const studentName = studentNameInput.value.trim();
 
-    if (studentName === "") {/*=== significa comparação*/
+    if (studentName === "") {
         loginMessage.textContent = "Digite seu nome para continuar";
-
         loginMessage.classList.remove("message-success");
         loginMessage.classList.add("message-error");
-
-        studentNameInput.focus(); /*quando erra ele foca na caixa de diálogo*/
-
+        studentNameInput.focus();
         return;
     }
-    loginMessage.textContent =
-        `Bem-vindo, ${studentName}!`;
+
+    // Salva o nome do aluno na sessão do navegador
+    sessionStorage.setItem("studentName", studentName);
+
+    loginMessage.textContent = `Bem-vindo, ${studentName}!`;
     loginMessage.classList.remove("message-error");
     loginMessage.classList.add("message-success");
 
-    wellcomeName.textContent = studentName;
+    welcomeName.textContent = studentName;
 
-    desktopStudentName.textContent = studentName;
-
-    setTimeout(function() {
-        wellcomeScreen.classList.add("hidden");
-        desktopScreen.classList.remove("hidden");
-    },2500);
-
+    // Transição para a tela de boas-vindas e redirecionamento
     loginScreen.classList.add("hidden");
-    wellcomeScreen.classList.remove("hidden");
+    welcomeScreen.classList.remove("hidden");
+
+    setTimeout(function () {
+        window.location.href = "desktop.html";
+    }, 2500);
 }
 
-loginForm.addEventListener(
-    "submit",
-    handleLoginSubmit
-
-);
+loginForm.addEventListener("submit", handleLoginSubmit);

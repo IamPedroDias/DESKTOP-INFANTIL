@@ -1,37 +1,17 @@
-*{ /*foi importante para fazer caber em toda tamanho de tela*/
+* {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
+
 body {
-    font-family: arial, sans-serif;
-    margin: 0; /*espaço externo*/
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /*cor de fundo da página geral*/
-
-}
-.login-visual{
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: clamp(300px, 40vw, 700px); /*controla tamanho minimo e maximo.*/
-}
-.login-visual2{
-    position: absolute;
-    right: 0;
-    bottom: -25px;
-    width: clamp(300px, 40vw, 650px);
+    font-family: "Titillium Web", sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+    overflow-x: hidden;
 }
 
-.login-character{
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.login-character2{
-    width: 100%;
-    height: auto;
-    display: block;
-}
-.login-screen{
+.login-screen {
     min-height: 100vh;
     position: relative;
     display: flex;
@@ -40,45 +20,140 @@ body {
     overflow: hidden;
 }
 
-.login-icon-swap{
+.login-visual,
+.login-visual2 {
+    position: absolute;
+    bottom: 0;
+    width: clamp(300px, 40vw, 700px);
+    z-index: 0;
+}
+
+.login-visual {
+    left: 0;
+}
+
+.login-visual2 {
+    right: 0;
+    bottom: -25px;
+}
+
+.login-character,
+.login-character2 {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 32px;
+    border-radius: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(10px);
+    z-index: 1;
+    max-width: 550px;
+    width: 100%;
+}
+
+.login-container h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: "Titillium Web", sans-serif;
+    font-size: 28px;
+}
+
+.login-topicon {
+    width: 50px;
+    height: auto;
+    margin-right: 15px;
+    transition: transform 0.2s ease;
+}
+
+.login-topicon:hover {
+    transform: scale(1.2);
+}
+
+.login-info {
+    background: rgba(10, 30, 36, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.info-block {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.info-block h2 {
+    margin: 0 0 8px;
+    font-size: 20px;
+    text-align: left;
+    color: white;
+    font-weight: bold;
+    font-family: "Titillium Web", sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.info-block p {
+    line-height: 1.5;
+    margin: 0;
+    color: white;
+    font-family: "Titillium Web", sans-serif;
+    text-align: justify;
+}
+
+.login-icon-swap {
     position: relative;
-    width: 120px;
-    margin-top:30px;
+    width: 100px;
+    margin-top: 10px;
     flex-shrink: 0;
 }
-.login-icon-swap .login-icon{
+
+.login-icon-swap .login-icon {
     width: 100%;
     margin-top: 0;
     display: block;
     transition: opacity 0.2s ease;
 }
+
 .icon-hover {
     position: absolute;
     top: 0;
     left: 0;
     opacity: 0;
 }
+
 .login-icon-swap:hover .icon-default {
     opacity: 0;
-    transform: none;
-}
-.login-icon-swap:hover .icon-hover{
-    opacity: 1;
-    transform: none;
 }
 
-.login-icon-swap::after{
+.login-icon-swap:hover .icon-hover {
+    opacity: 1;
+}
+
+.login-icon-swap::after {
     content: attr(data-tooltip);
     position: absolute;
     left: 80%;
     bottom: 90%;
     width: 220px;
-    max-width: 220px;
     text-align: center;
     line-height: 1.5;
     background: rgba(255, 255, 255, 0.8);
     color: #203a43;
-    padding: 8px 30px;
+    padding: 8px 12px;
     font-size: 14px;
     white-space: normal;
     opacity: 0;
@@ -90,170 +165,88 @@ body {
     font-weight: bold;
     overflow-wrap: break-word;
     height: auto;
-
 }
-.login-icon-swap:hover::after{
+
+.login-icon-swap:hover::after {
     opacity: 1;
 }
 
-.login-topicon{
-    width: 50px;
-    height: auto;
-    transition: transform 0.2s ease;
-    margin-right: 20px;
-    flex-shrink: 0;
-}
-.login-topicon:hover{
-    transform: scale(1.2);
-}
 .login-icon {
-    width: 120px;
+    width: 100px;
     height: auto;
     transition: transform 0.2s ease;
-    flex-shrink: 0;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
-.login-icon:hover{
+.login-icon:hover {
     transform: scale(1.2);
 }
 
-.login-container{ /*para encontrar uma class precisa do "." */
-    background: rgba(255, 255, 255, 0.1);
-    padding: 24px 32px; /*espaço dentro da caixa*/
-    width: 100%; /* tamanho em 100%, mas nao pode ser maior definido pelo max-width*/
-    max-width: 550px;
-    border-radius: 30px; /*arredonda os cantos*/
-    box-shadow: 0 8px 32px rgba(0,0,0,0.5); /*0px mas por ser 0 n precisa na unidade*/
-    display: flex;
-    flex-direction: column; /*aqui altera os filhos do div*/
-    gap: 5px;
-    text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    backdrop-filter: blur(10px);
-    /*transform: translateX(100px);*/
-    position: absolute;
-    z-index: 1;
-}
-.login-container h1{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-family: 'Titillium Web', sans-serif;
-
-}
-
-#student-name{ /* '#' para encontrar um "id"*/
-    padding: 12px; /* para fazer o campo de digitação ficar mais confortável*/
+#student-name {
+    padding: 12px;
     font-size: 16px;
     border: 1px dashed #ccc;
     border-radius: 8px;
+    width: 100%;
 }
-#student-name:focus{ /*pseudo-classes/ no caso alterando o estado de "focus"- seleção*/
-    outline: 2px dashed #00e676; /* outline é como uma borda de foco*/
+
+#student-name:focus {
+    outline: 2px dashed #00e676;
     outline-offset: 2px;
 }
 
-.login-info{
-    background: rgba(10, 30, 36, 0.55);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 12px;
-    padding: 20px;
-}
-.info-text{
-    flex: 1;
-}
-
-.info-block {
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
-.info-block h2 {
-    margin-top: 0;
-    margin-bottom: 12px;
-    font-size: 20px;
-    text-align: left;
-    color: white;
-    font-weight: bold;
-    font-family: 'Titillium Web', sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-.info-block p {
-    line-height: 1.5;
-    margin: 0 0 10px;
-    color: white;
-    font-family: "titillium web", sans-serif;
-    text-align: justify;
-}
-
-.info-block:last-child {
-    margin-bottom: 0;
-}
-
-#login-form{
+#login-form {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-.login-instruction{
-    color: white;
 
+.login-instruction {
+    color: white;
+    font-size: 16px;
 }
 
-#login-button{
-    padding: 12px;
-    border:none;
+#login-button {
+    padding: 14px;
+    border: none;
     border-radius: 8px;
     background: #00e676;
     color: #000;
     font-size: 16px;
-    font-weight: bold; /*bold é negrito*/
-    cursor: pointer; /* faz o cursor virar a mão*/
+    font-weight: bold;
+    cursor: pointer;
     transition: background-color 0.2s;
+    width: 100%;
 }
 
-#login-button:hover{
+#login-button:hover {
     background-color: #00c853;
     color: white;
 }
 
-#login-message{
+#login-message {
     margin: 0;
     min-height: 20px;
     text-align: center;
+    font-size: 16px;
 }
-.message-error{
+
+.message-error {
     color: #dc2626;
 }
-.message-success{
+
+.message-success {
     color: #16a34a;
 }
 
-.wellcome-content{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-
+.hidden {
+    display: none;
 }
 
-.wellcome-screen{
+.welcome-screen {
     min-height: 100vh;
-    background: linear-gradient(
-    135deg,
-    #0f2027,
-    #203a43,
-    #2c5364
-);
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     color: white;
     display: flex;
     justify-content: center;
@@ -261,25 +254,51 @@ body {
     text-align: center;
 }
 
-#wellcome-name{
-    font-family:"Playwrite HR Lijeva",cursive;
-    font-weight: bold;
+.welcome-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
-.loading-spinner{
+#welcome-name {
+    font-family: "Playwrite HR Lijeva", cursive;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.loading-spinner {
     width: 48px;
     height: 48px;
-    border: 5px solid rgba(255,255,255,0.25);
+    border: 5px solid rgba(255, 255, 255, 0.25);
     border-top-color: #00e676;
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
 }
-@keyframes spin {
-    to{
-        transform: rotate(360deg);
 
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
     }
 }
-.hidden {
-    display: none;
+
+/* Ajustes para telas menores */
+@media (max-width: 768px) {
+    .login-container {
+        padding: 20px;
+        margin: 20px;
+    }
+
+    .login-visual,
+    .login-visual2 {
+        width: clamp(200px, 30vw, 400px);
+    }
+
+    .login-container h1 {
+        font-size: 24px;
+    }
+
+    .login-topicon {
+        width: 40px;
+    }
 }
