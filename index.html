@@ -155,6 +155,8 @@
 
                 <button id="minimize-files" class="windows-control" type="button" aria-label="minimize">_</button>
 
+                <button id="maximize-files" class="windows-control" type="button" aria-label="Maximizar">□</button>
+
                 <button id="close-files" class="windows-close" type="button" aria-label="close">x</button>
 
                 </div>
@@ -167,7 +169,15 @@
     </div>
 
         <div class="taskbar">
+
             <button id="start-button" class="start-button" type="button">🪟 Iniciar</button>
+
+            <div class="taskbar-apps">
+                <button id="taskbar-files" class="taskbar-app hidden" type="button">
+                <span class="taskbar-app-icon">📁</span><span>Meus Arquivos</span>
+                </button>
+            </div>
+
             <div id="start-menu" class="start-menu hidden">
                 <h2>Menu Iniciar</h2>
                 <p>Escolha um aplicativo</p>

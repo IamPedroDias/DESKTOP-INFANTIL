@@ -75,7 +75,42 @@
     backdrop-filter: blur(10px);
     border-top: 1px solid rgba(255,255,255,0.18);
     z-index: 10;
-    justify-content: space-between;
+    justify-content: flex-start;
+}
+
+.taskbar-apps {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 0px;
+}
+
+.taskbar-app{
+    height: 30px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5 13px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 3px;
+    margin-bottom: 2px;
+}
+
+.taskbar-app:hover{
+    background: rgba(255,255,255,0.5);
+}
+
+.taskbar-app-icon{
+    font-size: 16px;
+}
+
+.taskbar-app.hidden{
+    display: none;
 }
 
 .start-button{
@@ -100,6 +135,7 @@
     border-radius: 8px;
     font-size: 16px;
     text-align: center;
+    margin-left: auto;
 }
 
 #clock-date{
@@ -109,43 +145,97 @@
 .start-menu {
     position: fixed;
     left: 16px;
-    bottom: 70px;
+    bottom: 43px;
     width: 300px;
     padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 16px;
     background: rgba( 15, 32, 39, 0.85);
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255,255,255,0.18);
     color: white;
     z-index: 20;
 }
 
+.start-menu h2{
+    font-family: "Titillium Web", sans-serif;
+}
+
+.start-menu-apps{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.start-menu-app{
+    min-height: 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 0px;
+    background: rgba(255,255,255,0.8);
+    border-radius: 10px;
+    border: none;
+    color: #1b1b1b;
+    cursor: pointer;
+}
+
+.start-menu-icon{
+    font-size: 25px;
+}
+
+.start-menu-app:hover{
+    background: rgba(255,255,255,0.2);
+}
+
 .app-window {
-    position: absolute;
-    top: 120px;
-    left: 250;
-    width: 500px;
-    height: 350px;
-    background: rgba( 15, 32, 39, 0.90);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: min(650px,80vw);
+    height: min(420px, 65vh);
+    transform: translate(-50%, -50%);
+    background: rgba( 245, 245, 245, 0.9);
     border-radius: 12px;
-    color: #203a43;
+    color: #1b1b1b;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-    z-index: 5;
+    z-index: 30;
+}
+
+.app-window.maximized{
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 40px);
+    max-height: none;
+    max-width: none;
+    transform: none;
+    border-radius: 0;
 }
 
 .windows-header {
     padding: 10px 14px;
-    background: rgba( 15, 32, 39, 0.90);
+    background: rgba( 15, 32, 39, 0.95);
     color: white;
     font-size: 18px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    cursor: grab;
+}
+
+.windows-header:active {
+    cursor: grabbing;
 }
 
 .windows-content {
     padding: 20px;
-    color: white;
+    color: black;
 }
 
 .windows-close{
