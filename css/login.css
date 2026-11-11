@@ -27,14 +27,83 @@ body {
     align-items: center;
     overflow: hidden;
 }
-.login-icon {
+
+.login-icon-swap{
+    position: relative;
+    width: 120px;
+    margin-top:30px;
+    flex-shrink: 0;
+}
+.login-icon-swap .login-icon{
+    width: 100%;
+    margin-top: 0;
+    display: block;
+    transition: opacity 0.2s ease;
+}
+.icon-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+.login-icon-swap:hover .icon-default {
+    opacity: 0;
+    transform: none;
+}
+.login-icon-swap:hover .icon-hover{
+    opacity: 1;
+    transform: none;
+}
+
+.login-icon-swap::after{
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 80%;
+    bottom: 90%;
+    width: 220px;
+    max-width: 220px;
+    text-align: center;
+    line-height: 1.5;
+    background: rgba(255, 255, 255, 0.8);
+    color: #203a43;
+    padding: 8px 30px;
+    font-size: 14px;
+    white-space: normal;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    border-radius: 48%;
+    transform: translateX(-120%);
+    font-family: "Playwrite HR Lijeva", cursive;
+    overflow-wrap: break-word;
+    height: auto;
+
+}
+.login-icon-swap:hover::after{
+    opacity: 1;
+}
+
+.login-topicon{
     width: 50px;
     height: auto;
     transition: transform 0.2s ease;
     margin-right: 20px;
+    flex-shrink: 0;
 }
+.login-topicon:hover{
+    transform: scale(1.2);
+}
+.login-icon {
+    width: 120px;
+    height: auto;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+    align-items: center;
+    margin-top: 30px;
+}
+
 .login-icon:hover{
-    transform: scale(2);
+    transform: scale(1.2);
 }
 
 .login-container{ /*para encontrar uma class precisa do "." */
@@ -80,19 +149,29 @@ body {
     border-radius: 12px;
     padding: 20px;
 }
+.info-text{
+    flex: 1;
+}
 
 .info-block {
     margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }
 
 .info-block h2 {
     margin-top: 0;
     margin-bottom: 12px;
     font-size: 20px;
-    text-align: center;
+    text-align: left;
     color: white;
     font-weight: bold;
     font-family: 'Titillium Web', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 .info-block p {
