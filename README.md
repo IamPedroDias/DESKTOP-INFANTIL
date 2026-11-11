@@ -1,5 +1,7 @@
 # Desktop Infantil
 
+**Idioma:** [🇧🇷 Português](README.md) | [🇺🇸 English](README.en.md)
+
 <p align="center">
   <strong>Um ambiente de aprendizagem de informática inspirado na área de trabalho do Windows.</strong>
 </p>
