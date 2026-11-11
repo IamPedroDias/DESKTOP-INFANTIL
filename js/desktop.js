@@ -4,9 +4,6 @@ const startMenu = document.querySelector("#start-menu");
 
 const appWindows=document.querySelectorAll(".app-window");
 let highestZIndex=30;
-let previousWindowLeft="";
-let previousWindowTop="";
-let previousWindowTransform ="";
 
 const desktopFilesButton = document.querySelector("#desktop-files");
 
@@ -14,16 +11,26 @@ const filesWindow=document.querySelector("#files-window");
 
 const openFilesButton=document.querySelector("#open-files");
 
+const openCalculatorButton=document.querySelector("#open-calculator");
+
+const calculatorWindow=document.querySelector("#calculator-window");
+
 const closeFilesButton=document.querySelector("#close-files");
 
+const closeCalculatorButton=document.querySelector("#close-calculator");
+
 const minimizeFilesButton=document.querySelector("#minimize-files");
+
+const minimizeCalculatorButton=document.querySelector("#minimize-calculator");
 
 const maximizeFilesButton =
     document.querySelector("#maximize-files");
 
+const maximizeCalculatorButton=document.querySelector("#maximize-calculator");
+
 const taskbarFilesButton=document.querySelector("#taskbar-files");
 
-const filesWindowHeader=filesWindow.querySelector(".windows-header");
+const taskbarCalculatorButton=document.querySelector("#taskbar-calculator");
 
 const clockTime = document.querySelector('#clock-time');
 
@@ -55,61 +62,59 @@ startButton.addEventListener("click", function(){
 
 });
 
-function openFilesWindow(){
+function openWindow(windowElement, taskbarButton){
 
-    filesWindow.classList.remove("hidden");
+    windowElement.classList.remove("hidden");
 
-    taskbarFilesButton.classList.remove("hidden");
+    taskbarButton.classList.remove("hidden");
 
-    bringWindowToFront(filesWindow);
-
-}
-
-function closeFilesWindow(){
-    filesWindow.classList.add("hidden");
-
-    taskbarFilesButton.classList.add("hidden");
+    bringWindowToFront(windowElement);
 
 }
 
-function minimizeFilesWindow() {
-    filesWindow.classList.add("hidden");
+function closeWindow(windowElement, taskbarButton){
+    windowElement.classList.add("hidden");
+
+    taskbarButton.classList.add("hidden");
 
 }
 
-function maximizeFilesWindow() {
+function minimizeWindow(windowElement) {
+    windowElement.classList.add("hidden");
 
-    const isMaximized = filesWindow.classList.contains("maximized");
+}
+
+function maximizeWindow(windowElement, maximizeButton) {
+
+    const isMaximized = windowElement.classList.contains("maximized");
 
     if (!isMaximized) {
 
-        previousWindowLeft = filesWindow.style.left;
+        windowElement.dataset.previousLeft = windowElement.style.left;
 
-        previousWindowTop = filesWindow.style.top;
+        windowElement.dataset.previousTop = windowElement.style.top;
 
-        previousWindowTransform = filesWindow.style.transform;
+        windowElement.dataset.previousTransform = windowElement.style.transform;
 
-        filesWindow.style.left = "";
-        filesWindow.style.top = "";
-        filesWindow.style.transform = "";
+        windowElement.style.left = "";
+        windowElement.style.top = "";
+        windowElement.style.transform = "";
 
-        filesWindow.classList.add("maximized");
+        windowElement.classList.add("maximized");
 
-        maximizeFilesButton.textContent = "❐";
-        maximizeFilesButton.setAttribute("aria-label", "Restaurar");
+        maximizeButton.textContent = "❐";
+        maximizeButton.setAttribute("aria-label", "Restaurar");
 
     }else {
 
-        filesWindow.classList.remove("maximized");
+        windowElement.classList.remove("maximized");
 
-        filesWindow.style.left = previousWindowLeft;
+        windowElement.style.left = windowElement.dataset.previousLeft || "";
+        windowElement.style.top = windowElement.dataset.previousTop || "";
+        windowElement.style.transform = windowElement.dataset.previousTransform || "";
 
-        filesWindow.style.top = previousWindowTop;
-
-        filesWindow.style.transform = previousWindowTransform;
-
-        maximizeFilesButton.textContent="□"
-        maximizeFilesButton.setAttribute("aria-label","Maximizar");
+        maximizeButton.textContent="□"
+        maximizeButton.setAttribute("aria-label","Maximizar");
     }
 
 }
@@ -122,69 +127,97 @@ function bringWindowToFront(windowElement){
 
 }
 
-filesWindowHeader.addEventListener("mousedown", function(event){
+function makeWindowDraggable(windowElement) {
 
-    if (filesWindow.classList.contains("maximized")){
-        return;
-    }
+    const windowHeader = windowElement.querySelector(".windows-header")
 
-    if (event.target.closest(".windows-controls")){
-        return;
-    }
-    const windowPosition = filesWindow.getBoundingClientRect();
+    windowHeader.addEventListener("mousedown", function (event) {
 
-    const offsetX = event.clientX - windowPosition.left;
-    const offsetY = event.clientY - windowPosition.top;
+        if (windowElement.classList.contains("maximized")) {
+            return;
+        }
 
-    filesWindow.style.transform = "none";
+        if (event.target.closest(".windows-controls")) {
+            return;
+        }
 
-    filesWindow.style.left = `${windowPosition.left}px`;
+        const windowPosition = windowElement.getBoundingClientRect();
 
-    filesWindow.style.top = `${windowPosition.top}px`;
+        const offsetX = event.clientX - windowPosition.left;
+        const offsetY = event.clientY - windowPosition.top;
 
-    function moveWindow(event){
+        windowElement.style.transform = "none";
 
-        filesWindow.style.left=`${event.clientX - offsetX}px`;
+        windowElement.style.left = `${windowPosition.left}px`;
 
-        filesWindow.style.top=`${event.clientY - offsetY}px`;
+        windowElement.style.top = `${windowPosition.top}px`;
 
-    }
+        function moveWindow(event) {
 
-    function stopMovingWindow(){
+            windowElement.style.left = `${event.clientX - offsetX}px`;
 
-        document.removeEventListener("mousemove", moveWindow);
+            windowElement.style.top = `${event.clientY - offsetY}px`;
 
-        document.removeEventListener("mouseup", stopMovingWindow);
+        }
 
-    }
+        function stopMovingWindow() {
 
-    document.addEventListener("mousemove", moveWindow);
+            document.removeEventListener("mousemove", moveWindow);
 
-    document.addEventListener("mouseup", stopMovingWindow);
+            document.removeEventListener("mouseup", stopMovingWindow);
 
-});
+        }
+
+        document.addEventListener("mousemove", moveWindow);
+
+        document.addEventListener("mouseup", stopMovingWindow);
+
+    });
+
+}
 
 openFilesButton.addEventListener("click", function(){
 
-    openFilesWindow();
+    openWindow(filesWindow, taskbarFilesButton);
 
     startMenu.classList.add("hidden");
 
 });
 
-desktopFilesButton.addEventListener("dblclick", function(){
-
-    openFilesWindow()
+openCalculatorButton.addEventListener("click", function(){
+    openWindow(calculatorWindow, taskbarCalculatorButton);
+    startMenu.classList.add("hidden");
 });
 
-closeFilesButton.addEventListener("click",closeFilesWindow);
+desktopFilesButton.addEventListener("dblclick", function(){
 
-minimizeFilesButton.addEventListener("click", minimizeFilesWindow);
+    openWindow(filesWindow, taskbarFilesButton);
+});
 
-maximizeFilesButton.addEventListener(
-    "click",
-    maximizeFilesWindow
-);
+closeFilesButton.addEventListener("click",function (){
+
+    closeWindow(filesWindow, taskbarFilesButton);
+});
+
+closeCalculatorButton.addEventListener("click", function(){
+    closeWindow(calculatorWindow, taskbarCalculatorButton);
+});
+
+minimizeFilesButton.addEventListener("click", function (){
+    minimizeWindow(filesWindow);
+});
+
+minimizeCalculatorButton.addEventListener("click", function(){
+    minimizeWindow(calculatorWindow);
+});
+
+maximizeFilesButton.addEventListener("click", function (){
+    maximizeWindow(filesWindow, maximizeFilesButton);
+});
+
+maximizeCalculatorButton.addEventListener("click", function() {
+    maximizeWindow(calculatorWindow, maximizeCalculatorButton);
+});
 
 taskbarFilesButton.addEventListener("click", function () {
 
@@ -192,11 +225,17 @@ taskbarFilesButton.addEventListener("click", function () {
 
 });
 
+taskbarCalculatorButton.addEventListener("click", function () {
+    calculatorWindow.classList.toggle("hidden");
+});
+
 appWindows.forEach(function(windowElement){
+
+    makeWindowDraggable(windowElement);
 
     windowElement.addEventListener("mousedown", function(){
 
         bringWindowToFront(windowElement);
 
-    })
-})
+    });
+});

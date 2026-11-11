@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" xmlns="http://www.w3.org/1999/html">
+<html lang="pt-BR" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -168,6 +168,27 @@
 
     </div>
 
+    <div id="calculator-window" class="app-window hidden">
+
+        <div class="windows-header">
+            <span>🧮 Calculadora</span>
+
+            <div class="windows-controls">
+
+                <button id="minimize-calculator" class="windows-control" type="button" aria-label="minimize">_</button>
+
+                <button id="maximize-calculator" class="windows-control" type="button" aria-label="Maximizar">□</button>
+
+                <button id="close-calculator" class="windows-close" type="button" aria-label="close">x</button>
+
+            </div>
+        </div>
+
+        <div class="windows-content">
+            <p>A calculadora aparecerá aqui. </p>
+        </div>
+    </div>
+
         <div class="taskbar">
 
             <button id="start-button" class="start-button" type="button">🪟 Iniciar</button>
@@ -175,6 +196,11 @@
             <div class="taskbar-apps">
                 <button id="taskbar-files" class="taskbar-app hidden" type="button">
                 <span class="taskbar-app-icon">📁</span><span>Meus Arquivos</span>
+                </button>
+
+                <button id="taskbar-calculator" class="taskbar-app hidden" type="button">
+                    <span class="taskbar-app-icon">🧮</span>
+                    <span>Calculadora </span>
                 </button>
             </div>
 
@@ -204,7 +230,7 @@
                         <span>Jogos</span>
                     </button>
 
-                    <button class="start-menu-app" type="button">
+                    <button id="open-calculator" class="start-menu-app" type="button">
                         <span class="start-menu-icon">🧮</span>
                         <span>Calculadora</span>
                     </button>

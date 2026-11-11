@@ -13,12 +13,12 @@
     background: rgba(255,255,255,0.12);
     backdrop-filter: blur(8px);
 }
-.desktop-welcome h1 {
+.desktop-wellcome h1 {
     margin: 0;
     font-size: 24px;
 }
 
-.desktop-welcome p {
+.desktop-wellcome p {
     margin: 5px 0 0;
 }
 
@@ -48,7 +48,7 @@
     background: rgba(255,255,255,0.05);
 }
 
-.desktop-icon.focus {
+.desktop-icon:focus {
     background: rgba(255,255,255,0.25);
 }
 
@@ -148,7 +148,6 @@
     bottom: 43px;
     width: 300px;
     padding: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 16px;
     background: rgba( 15, 32, 39, 0.85);
     backdrop-filter: blur(12px);
