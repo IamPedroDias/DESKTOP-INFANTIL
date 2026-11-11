@@ -34,7 +34,7 @@ body{
     flex: none;
     width: 210mm;
     min-height: 297mm;
-    padding: 25.4mm;
+    padding: 30mm 20mm 20mm 30mm;
     overflow-wrap: anywhere;
     outline: none;
     background-color: #ffffff;
@@ -44,10 +44,53 @@ body{
     line-height: 1.5;
     margin: 24px auto;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+    cursor: text;
+}
+
+.text-editor .ProseMirror {
+    min-height: 100%;
+    outline: none;
+}
+
+.text-editor .ProseMirror:focus {
+    outline: none;
+}
+
+.toolbar > button.active,
+.toolbar-group button.active {
+    background-color: #cbd5e1;
+    border-color: #94a3b8;
 }
 
 .text-editor p {
     margin: 0 0 8px;
+}
+
+.text-editor h1,
+.text-editor h2 {
+    font-family: "Times New Roman", serif;
+    margin: 0 0 12px;
+}
+
+.text-editor h1 {
+    font-size: 16pt;
+    text-align: center;
+}
+
+.text-editor h2 {
+    font-size: 14pt;
+}
+
+.text-editor p[data-document-style="figure-title"] {
+    margin: 16px 0 4px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.text-editor p[data-document-style="figure-caption"] {
+    margin: 0 0 16px;
+    font-size: 10pt;
+    text-align: center;
 }
 
 .text-editor img, .text-editor table {
@@ -74,7 +117,8 @@ body{
     font-size: 13px;
 }
 
-.toolbar > button{
+.toolbar > button,
+.toolbar-group button {
     width: 32px;
     height: 32px;
     padding: 0;
@@ -83,14 +127,32 @@ body{
     background-color: #ffffff;
     color: #222222;
     font-size: 15px;
+    cursor: pointer;
 }
 
-.toolbar > button:hover, .toolbar select:hover{
+.toolbar > button:hover,
+.toolbar-group button:hover,
+.toolbar select:hover{
     background-color: #e2e8f0;
 }
 
-.toolbar > button:active{
+.toolbar > button:active,
+.toolbar-group button:active{
     background-color: #cbd5e1;
+}
+
+.toolbar button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.toolbar-group {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding-left: 8px;
+    margin-left: 4px;
+    border-left: 1px solid #cbd5e1;
 }
 
 #paragraph-style {
@@ -149,6 +211,6 @@ body{
     cursor: pointer;
 }
 
-.text-editor:focus {
-    background-color: #ffffff;
+.text-editor:focus-visible {
+    outline: none;
 }

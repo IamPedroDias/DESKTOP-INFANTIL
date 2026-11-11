@@ -7,7 +7,7 @@
     <title>Editor de Texto</title>
 
     <link rel="stylesheet" href="blocodenotas.css">
-    <script src="blocodenotas.js" defer></script>
+    <script type="module" src="blocodenotas.js"></script>
 </head>
 <body>
 
@@ -15,7 +15,7 @@
 
     <section class="editor">
 
-        <div class="toolbar">
+        <div class="toolbar" role="toolbar" aria-label="Ferramentas de formatação">
             <select id="font-family" aria-label="Família da fonte">
                 <option value="Arial">Arial</option>
                 <option value="Comic Sans MS">Comic Sans MS</option>
@@ -38,13 +38,16 @@
                 <option value="32">32</option>
             </select>
 
-            <button type="button" data-command="bold" aria-label="Negrito"><strong>B</strong></button>
+            <button type="button" data-command="undo" aria-label="Desfazer" title="Voltar no tempo">↶</button>
+            <button type="button" data-command="redo" aria-label="Refazer" title="Avançar no Tempo">↷</button>
 
-            <button type="button" data-command="italic" aria-label="Itálico"><em>I</em></button>
+            <button type="button" data-command="bold" aria-label="Negrito" title="Deixa a letra mais grossinha"><strong>B</strong></button>
 
-            <button type="button" data-command="underline" aria-label="Sublinhado"><u>U</u></button>
+            <button type="button" data-command="italic" aria-label="Itálico" title="deixa a letra de lado"><em>I</em></button>
 
-            <button type="button" data-command="strikeThrough" aria-label="Tachado"><s>S</s></button>
+            <button type="button" data-command="underline" aria-label="Sublinhado" title="Passa linha embaixo da letra"><u>U</u></button>
+
+            <button type="button" data-command="strikeThrough" aria-label="Tachado" title="corta a letra no meio"><s>S</s></button>
 
             <div class="toolbar-group" role="group" aria-label="Alinhamento do texto">
 
@@ -115,7 +118,7 @@
 
         </div>
 
-        <div class="text-editor" id="text-editor" contenteditable="true" role="textbox" aria-label="Área de edição de texto" aria-multiline="true"></div>
+        <div class="text-editor" id="text-editor" role="textbox" aria-label="Área de edição de texto" aria-multiline="true"></div>
 
     </section>
 

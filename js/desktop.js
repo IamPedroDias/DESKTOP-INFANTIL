@@ -179,6 +179,9 @@ function makeWindowDraggable(windowElement) {
     });
 }
 
+// Aplica o arrasto a todas as janelas do desktop.
+appWindows.forEach(makeWindowDraggable);
+
 // ==================== EVENTOS GERAIS ========================
 if (startButton && startMenu) {
     startButton.addEventListener("click", function() {
