@@ -239,3 +239,4 @@ appWindows.forEach(function(windowElement){
 
     });
 });
+

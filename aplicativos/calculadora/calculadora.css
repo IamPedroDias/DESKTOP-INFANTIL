@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    padding: 20px;
+}
+
+.calculator {
+    width: 100%;
+}
+
+.top {
+    margin-top: 8px;
+}
+
+.tape {
+    height: 32px;
+    padding: 8px 10px;
+    margin-bottom: 8px;
+    text-align: left;
+    border: 1px solid;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.9);
+    font: 14px ui-monospace, Consolas, monospace;
+    overflow-y: auto;
+}
+
+.calculator-display {
+    height: 35px;
+    padding: 10px 10px;
+    margin-bottom: 8px;
+    text-align: right;
+    border: 1px solid;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.9);
+    font: 600 20px/1.1 "Titillium Web", sans-serif;
+}
+
+.calculator-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+
+

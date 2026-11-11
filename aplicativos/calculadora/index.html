@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="calculadora.css">
+</head>
+
+<body>
+
+<div class="calculator">
+    <div class="top">
+        <div class="tape" id="tape"></div>
+    </div>
+    <div class="calculator-display" id="calculator-display" aria-live="polite">0</div>
+
+    <div class="calculator-buttons">
+        <button type="button" class="danger" data-action="clear" aria-label="Limpar">C</button>
+        <button type="button" data-action="backspace" aria-label="Apagar">⌫</button>
+        <button type="button" data-action="percent" aria-label="Porcentagem">%</button>
+        <button type="button" data-operation="/" aria-label="Divisão">÷</button>
+        <button type="button" data-number="7">7</button>
+        <button type="button" data-number="8">8</button>
+        <button type="button" data-number="9">9</button>
+        <button type="button" data-operation="*" aria-label="Multiplicação">×</button>
+        <button type="button" data-number="4">4</button>
+        <button type="button" data-number="5">5</button>
+        <button type="button" data-number="6">6</button>
+        <button type="button" data-operation="-" aria-label="Subtração">-</button>
+        <button type="button" data-number="1">1</button>
+        <button type="button" data-number="2">2</button>
+        <button type="button" data-number="3">3</button>
+        <button type="button" data-operation="+" aria-label="Adição">+</button>
+        <button type="button" data-action="sign" aria-label="trocar sinal">±</button>
+        <button type="button" data-number="0">0</button>
+        <button type="button" data-action="decimal" aria-label="Decimal">,</button>
+        <button type="button" data-action="equals" aria-label="Resultado">=</button>
+        <button type="button" data-action="open-parenthesis">( </button>
+        <button type="button" data-action="close-parenthesis">)</button>
+        <button type="button" data-action="square">x²</button>
+        <button type="button" data-action="square-root">√</button>
+        <button type="button" data-action="power" aria-label="Potência">xʸ</button>
+    </div>
+</div>
+
+<script src="calculadora.js"></script>
+
+</body>
+</html>
