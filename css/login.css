@@ -4,7 +4,8 @@
 body {
     font-family: arial, sans-serif;
     margin: 0; /*espaço externo*/
-    background-color: #f0f4f8; /*cor de fundo da página geral*/
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /*cor de fundo da página geral*/
+
 }
 
 main{
@@ -15,15 +16,25 @@ main{
 }
 
 .login-container{ /*para encontrar uma class precisa do "." */
-    background-color: white;
-    padding: 32px; /*espaço dentro da caixa*/
+    position: fixed;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 24px 32px; /*espaço dentro da caixa*/
     width: 100%; /* tamanho em 100%, mas nao pode ser maior definido pelo max-width*/
-    max-width: 400px;
+    max-width: 550px;
     border-radius: 30px; /*arredonda os cantos*/
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /*0px mas por ser 0 n precisa na unidade*/
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5); /*0px mas por ser 0 n precisa na unidade*/
     display: flex;
     flex-direction: column; /*aqui altera os filhos do div*/
-    gap: 20px;
+    gap: 5px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(10px)
+}
+.login-container h1{
+    text-align: center;
+    color: white;
+    font-family: 'Titillium Web', sans-serif;
+
 }
 
 #student-name{ /* '#' para encontrar um "id"*/
@@ -37,18 +48,55 @@ main{
     outline-offset: 2px;
 }
 
+.login-info{
+    background: rgba(10, 30, 36, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.info-block {
+    margim-bottom: 24px;
+}
+
+.info-block h2 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.info-block p {
+    line-height: 1.5;
+    margin: 0 0 10px;
+    color: white;
+    font-family: "titillium web", sans-serif;
+    text-align: justify;
+}
+
+.info-block:last-child {
+    margin-bottom: 0;
+}
+
 #login-form{
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+.login-instruction{
+    color: white;
+
 }
 
 #login-button{
     padding: 12px;
     border:none;
     border-radius: 8px;
-    background-color: #2563eb;
-    color: white;
+    background: #00e676;
+    color: #000;
     font-size: 16px;
     font-weight: bold; /*bold é negrito*/
     cursor: pointer; /* faz o cursor virar a mão*/
@@ -56,12 +104,14 @@ main{
 }
 
 #login-button:hover{
-    background-color: #1d4ed8;
+    background-color: #00c853;
+    color: white;
 }
 
 #login-message{
     margin: 0;
     min-height: 20px;
+    text-align: center;
 }
 .message-error{
     color: #dc2626;
