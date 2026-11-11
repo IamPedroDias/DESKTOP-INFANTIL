@@ -1,0 +1,71 @@
+*{ /*foi importante para fazer caber em toda tamanho de tela*/
+    box-sizing: border-box;
+}
+body {
+    font-family: arial, sans-serif;
+    margin: 0; /*espaço externo*/
+    background-color: #f0f4f8; /*cor de fundo da página geral*/
+}
+
+main{
+    min-height: 100vh; /*min:quer dizer mínimo -vh: significa viewport height. aqui diz 100% da viewport (janela)*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container{ /*para encontrar uma class precisa do "." */
+    background-color: white;
+    padding: 32px; /*espaço dentro da caixa*/
+    width: 100%; /* tamanho em 100%, mas nao pode ser maior definido pelo max-width*/
+    max-width: 400px;
+    border-radius: 30px; /*arredonda os cantos*/
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /*0px mas por ser 0 n precisa na unidade*/
+    display: flex;
+    flex-direction: column; /*aqui altera os filhos do div*/
+    gap: 20px;
+}
+
+#student-name{ /* '#' para encontrar um "id"*/
+    padding: 12px; /* para fazer o campo de digitação ficar mais confortável*/
+    font-size: 16px;
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+}
+#student-name:focus{ /*pseudo-classes/ no caso alterando o estado de "focus"- seleção*/
+    outline: 2px dashed #2563eb; /* outline é como uma borda de foco*/
+    outline-offset: 2px;
+}
+
+#login-form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#login-button{
+    padding: 12px;
+    border:none;
+    border-radius: 8px;
+    background-color: #2563eb;
+    color: white;
+    font-size: 16px;
+    font-weight: bold; /*bold é negrito*/
+    cursor: pointer; /* faz o cursor virar a mão*/
+    transition: background-color 0.2s;
+}
+
+#login-button:hover{
+    background-color: #1d4ed8;
+}
+
+#login-message{
+    margin: 0;
+    min-height: 20px;
+}
+.message-error{
+    color: #dc2626;
+}
+.message-success{
+    color: #16a34a;
+}
