@@ -16,6 +16,10 @@ const wellcomeScreen = document.querySelector("#wellcome-screen");
 
 const wellcomeName=document.querySelector("#wellcome-name");
 
+const desktopStudentName = document.querySelector("#desktop-student-name");
+
+const desktopIcons=document.querySelectorAll("#desktop-icons");
+
 function handleLoginSubmit(event){
     event.preventDefault();
 
@@ -37,6 +41,8 @@ function handleLoginSubmit(event){
     loginMessage.classList.add("message-success");
 
     wellcomeName.textContent = studentName;
+
+    desktopStudentName.textContent = studentName;
 
     setTimeout(function() {
         wellcomeScreen.classList.add("hidden");

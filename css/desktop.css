@@ -1,0 +1,184 @@
+.desktop-screen{
+    min-height: 100vh;
+    background: linear-gradient(135deg, #163b4d, #0f2027);
+    color: white;
+    padding: 24px;
+    padding-bottom: 80px;
+    font-family: "Instrument Serif", sans-serif, serif;
+}
+
+.desktop-wellcome {
+    width: fit-content;
+    padding: 12px 20px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(8px);
+}
+.desktop-welcome h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.desktop-welcome p {
+    margin: 5px 0 0;
+}
+
+.desktop-icons {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.desktop-icon {
+    width: 90px;
+    display: Flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.2s ease;
+}
+
+.desktop-icon:hover {
+    background: rgba(255,255,255,0.05);
+}
+
+.desktop-icon.focus {
+    background: rgba(255,255,255,0.25);
+}
+
+.desktop-icon-image{
+    font-size: 40px;
+}
+
+.desktop-icon-name {
+    font-family: "Instrument Serif", sans-serif, serif;
+    font-size: 18px;
+    text-align: center;
+}
+
+.taskbar{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    background: rgba( 15, 32, 39, 0.75);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255,255,255,0.18);
+    z-index: 10;
+    justify-content: space-between;
+}
+
+.start-button{
+    padding: 5px 13px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.12);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.start-button:hover {
+    background: rgba(255,255,255,0.22);
+}
+
+.taskbar-clock{
+    padding: 12px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8px;
+    font-size: 16px;
+    text-align: center;
+}
+
+#clock-date{
+    font-size: 13px;
+}
+
+.start-menu {
+    position: fixed;
+    left: 16px;
+    bottom: 70px;
+    width: 300px;
+    padding: 20px;
+    background: rgba( 15, 32, 39, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: white;
+    z-index: 20;
+}
+
+.app-window {
+    position: absolute;
+    top: 120px;
+    left: 250;
+    width: 500px;
+    height: 350px;
+    background: rgba( 15, 32, 39, 0.90);
+    border-radius: 12px;
+    color: #203a43;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    z-index: 5;
+}
+
+.windows-header {
+    padding: 10px 14px;
+    background: rgba( 15, 32, 39, 0.90);
+    color: white;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.windows-content {
+    padding: 20px;
+    color: white;
+}
+
+.windows-close{
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.windows-close:hover {
+    background: #dc2626;
+}
+
+.windows-controls{
+    display: flex;
+    gap: 4px;
+}
+
+.windows-control{
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.windows-control:hover{
+    background: rgba( 255, 255, 255, 0.15);
+}
