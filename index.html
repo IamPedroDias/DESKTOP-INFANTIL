@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,44 +15,74 @@
 </head>
 <body>
 
-<main>
+<main id="login-screen" class="login-screen">
+    <aside class="login-visual">
+           <img src="assets/imagens/Romarinho.png" alt="" class="login-character">
+    </aside>
 
-<div class="login-container">
-    <h1>💻 DESKTOP INFANTIL</h1>
 
-    <section class="login-info">
+    <div class="login-container">
+        <h1><img src="assets/imagens/QuartoGamer.png" alt="" class="login-icon"> DESKTOP INFANTIL</h1>
 
-        <div class="info-block">
-    <h2>Leitura é a chave: </h2>
-            <p>Passe o mouse sobre os botões e leia os avisos na tela. A resposta do seu desafio quase sempre está bem diante dos seus olhos! </p>
-        </div>
-        <div class="info-block">
-    <h2>Para os Pais & Responsáveis:</h2>
-            <p>Navegue junto com seu filho; acompanhar essa atividade garante a segurança da criança e transforma a tecnologia em um momento único de aprendizado em família.</p>
-        </div>
-    </section>
+        <section class="login-info">
 
-    <form id="login-form"> <!--usado para formulário com a função submit (form)-->
+            <div class="info-block">
+                <h2>Leitura é a chave:</h2>
 
-    <label for="student-name"> <!--esse label "for" faz que ao clicar no nome do aluno ele leva o curso para ‘input’ "id" ambos chamados de "student-name" caso contrário não funcionaria-->
-        <p class="login-instruction">Digite o seu nome para começar:</p>
-    </label>
+                <p>
+                    Passe o mouse sobre os botões e leia os avisos na tela.
+                    A resposta do seu desafio quase sempre está bem diante
+                    dos seus olhos!
+                </p>
+            </div>
 
-    <input
-            type="text"
-            id="student-name"
-            name="studentName"
-            placeholder="Digite seu nome"
-    >
+            <div class="info-block">
+                <h2>Para os Pais & Responsáveis:</h2>
 
-    <button id="login-button" type="submit"><!--submit envia formulário-->
-        ENTRAR
-    </button>
+                <p>
+                    Navegue junto com seu filho; acompanhar essa atividade
+                    garante a segurança da criança e transforma a tecnologia
+                    em um momento único de aprendizado em família.
+                </p>
+            </div>
 
-    <p id="login-message" aria-live="polite"></p>
-    </form>
-</div>
-    </main>
+        </section>
 
+        <form id="login-form"> <!--usado para formulário com a função submit (form)-->
+
+            <label for="student-name"> <!--esse label "for" faz que ao clicar no nome do aluno ele leva o curso para ‘input’ "id" ambos chamados de "student-name" caso contrário não funcionaria-->
+                <p class="login-instruction">Digite o seu nome para começar:</p>
+            </label>
+
+            <input
+                    type="text"
+                    id="student-name"
+                    name="studentName"
+                    placeholder="Digite seu nome"
+            >
+
+            <button id="login-button" type="submit"><!--submit envia formulário-->
+                ENTRAR
+            </button>
+
+            <p id="login-message" aria-live="polite"></p>
+        </form>
+    </div>
+</main>
+<!--tela de boas vindas-->
+<section id="wellcome-screen" class="wellcome-screen hidden">
+    <div class="wellcome-content">
+        <h2>Bem-Vindo, <span id="wellcome-name"></span>
+        </h2>
+        <div class="loading-spinner"></div>
+        <p> Preparando área de trabalho</p>
+    </div>
+</section>
+
+<!--DESKTOP-->
+<section id="desktop-screen" class="hidden" >
+    <h1>Desktop infantil</h1>
+    <p>Bem-vindo ao sistema!</p>
+</section>
 </body>
 </html>

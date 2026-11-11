@@ -6,6 +6,16 @@ const loginMessage =
 
 const loginForm = document.querySelector("#login-form");
 
+const loginScreen =
+    document.querySelector("#login-screen");
+
+const desktopScreen =
+    document.querySelector("#desktop-screen");
+
+const wellcomeScreen = document.querySelector("#wellcome-screen");
+
+const wellcomeName=document.querySelector("#wellcome-name");
+
 function handleLoginSubmit(event){
     event.preventDefault();
 
@@ -25,6 +35,16 @@ function handleLoginSubmit(event){
         `Bem-vindo, ${studentName}!`;
     loginMessage.classList.remove("message-error");
     loginMessage.classList.add("message-success");
+
+    wellcomeName.textContent = studentName;
+
+    setTimeout(function() {
+        wellcomeScreen.classList.add("hidden");
+        desktopScreen.classList.remove("hidden");
+    },2500);
+
+    loginScreen.classList.add("hidden");
+    wellcomeScreen.classList.remove("hidden");
 }
 
 loginForm.addEventListener(
@@ -32,4 +52,3 @@ loginForm.addEventListener(
     handleLoginSubmit
 
 );
-
