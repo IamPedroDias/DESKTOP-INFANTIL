@@ -14,6 +14,9 @@ const fontColorInput = document.querySelector("#font-color");
 const applyCustomColorBtn = document.querySelector("#apply-custom-color");
 const openColorPickerBtn = document.querySelector("#open-color-picker");
 const customColorSwatch = document.querySelector("#custom-color-swatch");
+const newSheetModal = document.querySelector("#new-sheet-modal");
+const modalCancelBtn = document.querySelector("#modal-cancel-btn");
+const modalConfirmBtn = document.querySelector("#modal-confirm-btn");
 
 function updateCustomSwatch(color) {
     if (customColorSwatch) {
@@ -247,14 +250,43 @@ function resetEditor() {
     editor.chain().focus().run();
 }
 
+function openNewSheetModal() {
+    newSheetModal.hidden = false;
+    // Focus the cancel button for accessibility
+    modalCancelBtn.focus();
+}
+
+function closeNewSheetModal() {
+    newSheetModal.hidden = true;
+}
+
+function handleNewSheetConfirm() {
+    resetEditor();
+    closeNewSheetModal();
+}
+
 newSheetBtn.addEventListener("click", () => {
     if (!editor.getText().trim()) {
         resetEditor();
         return;
     }
+    openNewSheetModal();
+});
 
-    if (confirm("Vamos fazer de novo? Isso vai apagar o texto atual para começar uma folha em branco.")) {
-        resetEditor();
+modalCancelBtn.addEventListener("click", closeNewSheetModal);
+modalConfirmBtn.addEventListener("click", handleNewSheetConfirm);
+
+// Close modal on overlay click
+newSheetModal.addEventListener("click", (event) => {
+    if (event.target === newSheetModal) {
+        closeNewSheetModal();
+    }
+});
+
+// Close modal on Escape key
+document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !newSheetModal.hidden) {
+        closeNewSheetModal();
     }
 });
 

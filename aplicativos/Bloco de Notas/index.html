@@ -131,6 +131,18 @@
 
     </section>
 
+    <!-- Modal de confirmação para nova folha -->
+    <div class="modal-overlay" id="new-sheet-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+        <div class="modal">
+            <h2 id="modal-title">Nova folha</h2>
+            <p>Vamos fazer de novo? Isso vai <strong>apagar o texto atual</strong> para começar uma folha em branco.</p>
+            <div class="modal-actions">
+                <button type="button" class="modal-btn modal-btn-cancel" id="modal-cancel-btn">Não, continuar escrevendo</button>
+                <button type="button" class="modal-btn modal-btn-confirm" id="modal-confirm-btn">Sim, folha nova</button>
+            </div>
+        </div>
+    </div>
+
 </main>
 
 </body>
