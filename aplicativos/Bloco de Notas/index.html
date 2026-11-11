@@ -41,6 +41,10 @@
             <button type="button" data-command="undo" aria-label="Desfazer" title="Voltar no tempo">↶</button>
             <button type="button" data-command="redo" aria-label="Refazer" title="Avançar no Tempo">↷</button>
 
+            <button type="button" id="new-sheet-btn" aria-label="Nova folha" title="Vamos fazer de novo!"> 📄
+            </button>
+
+
             <button type="button" data-command="bold" aria-label="Negrito" title="Deixa a letra mais grossinha"><strong>B</strong></button>
 
             <button type="button" data-command="italic" aria-label="Itálico" title="deixa a letra de lado"><em>I</em></button>
@@ -112,8 +116,13 @@
                         aria-label="Branco" title="Branco"
                         style="--swatch-color: #FFFFFF"></button>
 
-                <label for="font-color">Mais cores</label>
-                <input type="color" id="font-color" value="#222222">
+                <div class="custom-color-wrapper">
+                    <button type="button" id="apply-custom-color" aria-label="Aplicar cor personalizada" title="Aplicar cor escolhida">
+                        A<span id="custom-color-swatch" style="--swatch-color: #222222"></span>
+                    </button>
+                    <button type="button" id="open-color-picker" aria-label="Escolher nova cor" title="Escolher nova cor">▼</button>
+                    <input type="color" id="font-color" value="#222222" class="hidden-color-input">
+                </div>
             </div>
 
         </div>

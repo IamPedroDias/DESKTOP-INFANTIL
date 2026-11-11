@@ -11,6 +11,15 @@ const fontSelector = document.querySelector("#font-family");
 const sizeSelector = document.querySelector("#font-size");
 const paragraphStyleSelector = document.querySelector("#paragraph-style");
 const fontColorInput = document.querySelector("#font-color");
+const applyCustomColorBtn = document.querySelector("#apply-custom-color");
+const openColorPickerBtn = document.querySelector("#open-color-picker");
+const customColorSwatch = document.querySelector("#custom-color-swatch");
+
+function updateCustomSwatch(color) {
+    if (customColorSwatch) {
+        customColorSwatch.style.setProperty("--swatch-color", color);
+    }
+}
 
 const ParagraphStyle = Extension.create({
     name: "paragraphStyle",
@@ -104,6 +113,9 @@ function runCommand(command) {
 function applyParagraphStyle(style) {
     const chain = editor.chain().focus();
 
+    // Limpa atributos manuais conflitantes de tamanho de fonte e negrito ao trocar de estilo
+    chain.unsetMark("textStyle").unsetMark("bold");
+
     if (style === "p") {
         chain.setParagraph().setDocumentStyle(null).run();
         return;
@@ -118,8 +130,13 @@ function applyParagraphStyle(style) {
 }
 
 function updateToolbarState(currentEditor) {
+    const isH1 = currentEditor.isActive("heading", { level: 1 });
+    const isH2 = currentEditor.isActive("heading", { level: 2 });
+    const docStyle = currentEditor.getAttributes("paragraph").documentStyle;
+    const isFigureStyle = docStyle === "figure-title" || docStyle === "figure-caption";
+
     const commandStates = {
-        bold: currentEditor.isActive("bold"),
+        bold: currentEditor.isActive("bold") || isH1,
         italic: currentEditor.isActive("italic"),
         underline: currentEditor.isActive("underline"),
         strikeThrough: currentEditor.isActive("strike"),
@@ -144,27 +161,30 @@ function updateToolbarState(currentEditor) {
         }
     });
 
-    const { fontFamily, fontSize } = currentEditor.getAttributes("textStyle");
+    const { fontFamily, fontSize, color } = currentEditor.getAttributes("textStyle");
 
     fontSelector.value = (
         fontFamily && [...fontSelector.options].some(option => option.value === fontFamily)
     ) ? fontFamily : "Arial";
 
     const sizeInPoints = fontSize?.replace("pt", "");
-    sizeSelector.value = (
-        sizeInPoints && [...sizeSelector.options].some(option => option.value === sizeInPoints)
-    ) ? sizeInPoints : "12";
-
-    if (/^#[0-9a-f]{6}$/i.test(textStyle.color || "")) {
-        fontColorInput.value = textStyle.color;
+    if (sizeInPoints) {
+        sizeSelector.value = [...sizeSelector.options].some(option => option.value === sizeInPoints) ? sizeInPoints : "12";
+    } else {
+        sizeSelector.value = isFigureStyle ? "10" : "12";
     }
 
-    if (currentEditor.isActive("heading", { level: 1 })) {
+    if (/^#[0-9a-f]{6}$/i.test(color || "")) {
+        fontColorInput.value = color;
+        updateCustomSwatch(color);
+    }
+
+    if (isH1) {
         paragraphStyleSelector.value = "h1";
-    } else if (currentEditor.isActive("heading", { level: 2 })) {
+    } else if (isH2) {
         paragraphStyleSelector.value = "h2";
     } else {
-        paragraphStyleSelector.value = currentEditor.getAttributes("paragraph").documentStyle || "p";
+        paragraphStyleSelector.value = docStyle || "p";
     }
 }
 
@@ -189,8 +209,21 @@ toolbar.addEventListener("click", event => {
     }
 
     if (button.dataset.color) {
-        editor.chain().focus().setColor(button.dataset.color).run();
+        const color = button.dataset.color;
+        fontColorInput.value = color;
+        updateCustomSwatch(color);
+        editor.chain().focus().setColor(color).run();
     }
+});
+
+applyCustomColorBtn.addEventListener("click", () => {
+    const color = fontColorInput.value;
+    updateCustomSwatch(color);
+    editor.chain().focus().setColor(color).run();
+});
+
+openColorPickerBtn.addEventListener("click", () => {
+    fontColorInput.click();
 });
 
 fontSelector.addEventListener("change", event => {
@@ -205,6 +238,23 @@ paragraphStyleSelector.addEventListener("change", event => {
     applyParagraphStyle(event.target.value);
 });
 
-fontColorInput.addEventListener("input", event => {
-    editor.chain().focus().setColor(event.target.value).run();
+const newSheetBtn = document.querySelector("#new-sheet-btn");
+
+function resetEditor() {
+    editor.commands.clearContent(true);
+    editor.commands.setParagraph();
+    localStorage.removeItem(STORAGE_KEY);
+    editor.chain().focus().run();
+}
+
+newSheetBtn.addEventListener("click", () => {
+    if (!editor.getText().trim()) {
+        resetEditor();
+        return;
+    }
+
+    if (confirm("Vamos fazer de novo? Isso vai apagar o texto atual para começar uma folha em branco.")) {
+        resetEditor();
+    }
 });
+
