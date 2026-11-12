@@ -78,9 +78,20 @@ Romárinho é o personagem infantil que acompanha o projeto. Seu nome faz refer�
 
 ## Como executar
 
+### Pré-requisitos
+- [Node.js](https://nodejs.org/) instalado no computador.
+
+### Passo a passo
 1. Baixe ou clone este repositório.
-2. Abra a pasta do projeto.
-3. Abra o arquivo `index.html` em um navegador.
+2. Abra o terminal na pasta do projeto e instale as dependências:
+   ```bash
+   npm install
+   ```
+3. incie o servidor de desenvolvimento:
+	```bash
+	npm run dev
+	```
+4. Abra no navegador o endereço local exibido (geralmente `http://localhost:5173`).
 
 ## Autor
 

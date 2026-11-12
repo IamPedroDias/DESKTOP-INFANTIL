@@ -78,9 +78,20 @@ Romárinho is the child character that accompanies the project. His name refers 
 
 ## How to run
 
+### Prerequisites
+- [Node.js](https://nodejs.org/) installed on your computer.
+
+### Step by step
 1. Download or clone this repository.
-2. Open the project folder.
-3. Open `index.html` in a browser.
+2. Open the terminal in the project folder and install the dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+4. Open the local address displayed in the terminal in your browser (usually `http://localhost:5173`).
 
 ## Author
 
