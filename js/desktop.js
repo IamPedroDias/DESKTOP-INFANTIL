@@ -230,7 +230,7 @@ if (taskbarFilesButton) {
         if (filesWindow.classList.contains("hidden")) {
             openWindow(filesWindow, this);
         } else {
-            closeWindow(filesWindow, this);
+            minimizeWindow(filesWindow, this);
         }
     });
 }
@@ -253,7 +253,7 @@ document.getElementById("minimize-calculator").addEventListener("click", functio
     minimizeWindow(calculatorWindow);
 });
 
-// Bloco de Notas
+// Editor de Texto
 document.getElementById("open-notepad").addEventListener("click", function() {
     openNotepadWindow();
     if (startMenu) startMenu.classList.add("hidden");
@@ -281,9 +281,19 @@ if (taskbarNotepadButton) {
         if (notepadWindow.classList.contains("hidden")) {
             openNotepadWindow();
         } else {
-            closeWindow(notepadWindow, this);
+            minimizeWindow(notepadWindow, this);
         }
     });
+}
+
+if (taskbarCalculatorButton) {
+    taskbarCalculatorButton.addEventListener("click", function() {
+        if (calculatorWindow.classList.contains("hidden")) {
+            openWindow(calculatorWindow, this);
+        } else{
+            minimizeWindow(calculatorWindow);
+        }
+    })
 }
 
 // ==================== JANELAS COMEÇAM OCULTAS ========================
