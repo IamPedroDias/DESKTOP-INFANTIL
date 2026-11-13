@@ -28,8 +28,17 @@ body{
     flex-direction: column;
     flex: 1;
     min-height: 0;
-    overflow: auto;
 }
+
+.editor-content {
+    overflow: auto;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 24px 16px;
+}
+
 .text-editor {
     flex: none;
     width: 210mm;
@@ -42,7 +51,6 @@ body{
     font-family: arial, sans-serif;
     font-size: 16px;
     line-height: 1.5;
-    margin: 24px auto;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
     cursor: text;
 }
@@ -117,6 +125,10 @@ body{
 }
 
 .toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     flex-wrap: wrap;

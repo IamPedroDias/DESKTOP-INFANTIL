@@ -6,6 +6,7 @@ import { TextStyleKit } from "@tiptap/extension-text-style";
 const STORAGE_KEY = "desktop-infantil:notepad-content:v1";
 
 const editorElement = document.querySelector("#text-editor");
+const editorContentElement = document.querySelector(".editor-content");
 const toolbar = document.querySelector(".toolbar");
 const fontSelector = document.querySelector("#font-family");
 const sizeSelector = document.querySelector("#font-size");
@@ -120,12 +121,12 @@ function applyParagraphStyle(style) {
     chain.unsetMark("textStyle").unsetMark("bold");
 
     if (style === "p") {
-        chain.setParagraph().setDocumentStyle(null).run();
+        chain.unsetMark("italic").unsetMark("underline").unsetMark("strike").setParagraph().setDocumentStyle(null).run();
         return;
     }
 
     if (style === "h1" || style === "h2") {
-        chain.setHeading({ level: Number(style.slice(1)) }).run();
+        chain.setDocumentStyle(null).setHeading({ level: Number(style.slice(1)) }).run();
         return;
     }
 
@@ -191,9 +192,9 @@ function updateToolbarState(currentEditor) {
     }
 }
 
-editorElement.addEventListener("click", event => {
+editorContentElement?.addEventListener("click", () => {
     if (editor && !editor.isFocused) {
-        editor.chain().focus().run();
+        editor.commands.focus();
     }
 });
 
