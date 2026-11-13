@@ -19,6 +19,9 @@ const newSheetModal = document.querySelector("#new-sheet-modal");
 const modalCancelBtn = document.querySelector("#modal-cancel-btn");
 const modalConfirmBtn = document.querySelector("#modal-confirm-btn");
 
+// Guard flag para evitar loop infinito de undo
+let isUndoing = false;
+
 function updateCustomSwatch(color) {
     if (customColorSwatch) {
         customColorSwatch.style.setProperty("--swatch-color", color);
@@ -92,6 +95,17 @@ const editor = new Editor({
     onCreate: ({ editor: currentEditor }) => updateToolbarState(currentEditor),
     onSelectionUpdate: ({ editor: currentEditor }) => updateToolbarState(currentEditor),
     onUpdate: ({ editor: currentEditor }) => {
+        // Evita loop infinito: se estamos processando um undo, não verificar overflow
+        if (isUndoing) return;
+
+        if (editorElement && editorElement.scrollHeight > editorElement.clientHeight) {
+            // Conteúdo excedeu a altura física da folha - desfaz a última alteração
+            isUndoing = true;
+            currentEditor.commands.undo();
+            // Libera a flag no próximo microtask para permitir digitação normal (incluindo Backspace)
+            queueMicrotask(() => { isUndoing = false; });
+        }
+
         saveContent(currentEditor);
         updateToolbarState(currentEditor);
     }

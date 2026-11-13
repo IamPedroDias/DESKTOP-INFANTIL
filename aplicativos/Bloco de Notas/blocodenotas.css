@@ -42,9 +42,10 @@ body{
 .text-editor {
     flex: none;
     width: 210mm;
-    min-height: 297mm;
+    height: 297mm;
     padding: 30mm 20mm 20mm 30mm;
     overflow-wrap: anywhere;
+    overflow: hidden;
     outline: none;
     background-color: #ffffff;
     color: #222222;
